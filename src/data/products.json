@@ -1,0 +1,79 @@
+[
+  {
+    "id": "wyze-cam-v4",
+    "stepId": "cameras",
+    "layout": "grid",
+    "name": "Wyze Cam v4",
+    "description": "The clearest Wyze Cam ever made.",
+    "learnMoreUrl": "#",
+    "image": "/assets/products/wyze-cam-v4.png",
+    "badge": "Save 22%",
+    "compareAtPrice": 35.98,
+    "price": 27.98,
+    "variants": [
+      { "id": "white", "label": "White", "swatch": "#F4F3EE" },
+      { "id": "grey", "label": "Grey", "swatch": "#9B9B93" },
+      { "id": "black", "label": "Black", "swatch": "#2B2B2B" }
+    ]
+  },
+  {
+    "id": "wyze-cam-pan-v3",
+    "stepId": "cameras",
+    "layout": "grid",
+    "name": "Wyze Cam Pan v3",
+    "description": "360° pan and 180° tilt security camera.",
+    "learnMoreUrl": "#",
+    "image": "/assets/products/wyze-cam-pan-v3.png",
+    "badge": "Save 12%",
+    "compareAtPrice": 39.98,
+    "price": 34.98,
+    "variants": [
+      { "id": "white", "label": "White", "swatch": "#F4F3EE" },
+      { "id": "black", "label": "Black", "swatch": "#2B2B2B" }
+    ]
+  },
+  {
+    "id": "wyze-cam-floodlight-v2",
+    "stepId": "cameras",
+    "layout": "grid",
+    "name": "Wyze Cam Floodlight v2",
+    "description": "2K floodlight camera with a 160° wide-angle view for your garage.",
+    "learnMoreUrl": "#",
+    "image": "/assets/products/wyze-cam-floodlight-v2.png",
+    "badge": "Save 22%",
+    "compareAtPrice": 89.98,
+    "price": 69.98,
+    "variants": [
+      { "id": "white", "label": "White", "swatch": "#F4F3EE" },
+      { "id": "black", "label": "Black", "swatch": "#2B2B2B" }
+    ]
+  },
+  {
+    "id": "wyze-duo-cam-doorbell",
+    "stepId": "cameras",
+    "layout": "grid",
+    "name": "Wyze Duo Cam Doorbell",
+    "description": "Two cameras. Two views. Double the porch protection.",
+    "learnMoreUrl": "#",
+    "image": "/assets/products/wyze-duo-cam-doorbell.png",
+    "price": 69.98,
+    "variants": [
+      { "id": "white", "label": "White", "swatch": "#F4F3EE" },
+      { "id": "black", "label": "Black", "swatch": "#2B2B2B" }
+    ]
+  },
+  {
+    "id": "wyze-battery-cam-pro",
+    "stepId": "cameras",
+    "layout": "row",
+    "name": "Wyze Battery Cam Pro",
+    "description": "Protect anywhere. See everything in 2.5K HDR. No power outlet or electrician needed.",
+    "learnMoreUrl": "#",
+    "image": "/assets/products/wyze-battery-cam-pro.png",
+    "price": 89.98,
+    "variants": [
+      { "id": "white", "label": "White", "swatch": "#F4F3EE" },
+      { "id": "black", "label": "Black", "swatch": "#2B2B2B" }
+    ]
+  }
+]
