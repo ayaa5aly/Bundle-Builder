@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ImageOff } from "lucide-react";
 import type { Product } from "../../domain/types";
-import { DEFAULT_VARIANT_ID } from "../../domain/types";
+import { useBundle } from "../../store/BundleContext";
 import { Badge } from "../ui/Badge";
 import { PriceDisplay } from "../ui/PriceDisplay";
 import { QuantityStepper } from "../ui/QuantityStepper";
@@ -9,45 +9,21 @@ import { VariantSwatchSelector } from "../ui/VariantSwatchSelector";
 
 interface ProductCardProps {
   product: Product;
-  onSelectedChange?: (productId: string, selected: boolean) => void;
 }
 
 /**
- * TEMPORARY (Step 6): quantity state lives locally per card via useState,
- * shaped exactly like the future reducer slice (activeVariantId + a
- * quantities map keyed by variant id) so swapping in real dispatch calls
- * later is a mechanical change, not a rewrite. This local state will be
- * removed once the store lands — the card will take value/onChange props
- * instead.
+ * Reads and writes quantity/variant through the shared bundle store, so the
+ * same values shown here are exactly what the review panel totals up.
  */
-export function ProductCard({ product, onSelectedChange }: ProductCardProps) {
+export function ProductCard({ product }: ProductCardProps) {
+  const { getQuantity, getVariant, setQuantity, setVariant } = useBundle();
   const hasVariants = Boolean(product.variants && product.variants.length > 0);
-  const firstVariantId = product.variants?.[0]?.id ?? DEFAULT_VARIANT_ID;
-
-  const [activeVariantId, setActiveVariantId] = useState(firstVariantId);
-  const [quantities, setQuantities] = useState<Record<string, number>>({});
   const [imageError, setImageError] = useState(false);
 
-  useEffect(() => {
-    setImageError(false);
-  }, [product.image]);
-
-  const activeQuantity = quantities[activeVariantId] ?? 0;
+  const activeVariantId = getVariant(product.id);
+  const activeQuantity = getQuantity(product.id);
   const isSelected = activeQuantity > 0;
   const isRow = product.layout === "row";
-
-  useEffect(() => {
-    if (onSelectedChange) {
-      onSelectedChange(product.id, isSelected);
-    }
-  }, [isSelected, onSelectedChange, product.id]);
-
-  function setActiveQuantity(next: number) {
-    setQuantities((prev) => ({
-      ...prev,
-      [activeVariantId]: Math.max(0, next),
-    }));
-  }
 
   return (
     <div
@@ -73,7 +49,7 @@ export function ProductCard({ product, onSelectedChange }: ProductCardProps) {
               alt={product.name}
               loading="lazy"
               onError={() => setImageError(true)}
-              className="h-full w-full object-contain"
+              className="h-full w-full object-contain p-2"
             />
           ) : (
             <ImageOff size={24} aria-hidden="true" />
@@ -81,9 +57,16 @@ export function ProductCard({ product, onSelectedChange }: ProductCardProps) {
         </div>
 
         <div className="flex-1">
-          <h3 className="text-base font-semibold leading-6 text-slate-900">
-            {product.name}
-          </h3>
+          <div className="flex items-start justify-between gap-2">
+            <h3 className="text-base font-semibold leading-6 text-slate-900">
+              {product.name}
+            </h3>
+            {product.isRequired && (
+              <span className="shrink-0 text-xs font-semibold uppercase tracking-wide text-brand-600">
+                Required
+              </span>
+            )}
+          </div>
 
           {product.description && (
             <p className="mt-3 text-sm leading-6 text-slate-500">
@@ -104,7 +87,7 @@ export function ProductCard({ product, onSelectedChange }: ProductCardProps) {
               <VariantSwatchSelector
                 variants={product.variants!}
                 activeVariantId={activeVariantId}
-                onSelect={setActiveVariantId}
+                onSelect={(variantId) => setVariant(product.id, variantId)}
                 productName={product.name}
               />
             </div>
@@ -114,8 +97,9 @@ export function ProductCard({ product, onSelectedChange }: ProductCardProps) {
             <QuantityStepper
               label={`${product.name} quantity`}
               value={activeQuantity}
-              onIncrement={() => setActiveQuantity(activeQuantity + 1)}
-              onDecrement={() => setActiveQuantity(activeQuantity - 1)}
+              onIncrement={() => setQuantity(product.id, activeQuantity + 1)}
+              onDecrement={() => setQuantity(product.id, activeQuantity - 1)}
+              decrementDisabled={product.isRequired && activeQuantity <= 1}
               size="sm"
             />
             <PriceDisplay

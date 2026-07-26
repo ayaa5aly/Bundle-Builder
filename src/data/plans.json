@@ -1,0 +1,34 @@
+[
+  {
+    "id": "cam-basic",
+    "name": "Cam Basic",
+    "description": "12-second event videos with 14-day cooldown. Free, forever.",
+    "price": 0,
+    "features": ["14-day event history", "1 camera", "Motion & sound alerts"]
+  },
+  {
+    "id": "cam-unlimited",
+    "name": "Cam Unlimited",
+    "description": "Unlimited-length event videos, unlimited cameras, smarter AI detection.",
+    "badge": "Most Popular",
+    "price": 9.99,
+    "compareAtPrice": 12.99,
+    "features": [
+      "Unlimited cameras",
+      "Unlimited-length videos",
+      "Person, pet & vehicle detection"
+    ]
+  },
+  {
+    "id": "cam-protect-pro",
+    "name": "Cam Protect Pro",
+    "description": "Everything in Unlimited, plus 24/7 professional monitoring.",
+    "price": 19.99,
+    "compareAtPrice": 24.99,
+    "features": [
+      "Everything in Unlimited",
+      "24/7 professional monitoring",
+      "Priority emergency dispatch"
+    ]
+  }
+]

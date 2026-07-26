@@ -27,3 +27,20 @@ export interface Product {
 }
 
 export const DEFAULT_VARIANT_ID = "default";
+
+export interface Plan {
+  id: string;
+  name: string;
+  description: string;
+  badge?: string; // "Most Popular"
+  price: number; // per month, active
+  compareAtPrice?: number; // per month, struck through
+  features: string[];
+}
+
+export interface StepMeta {
+  id: StepId;
+  index: number; // 1-based, "STEP N OF 4"
+  title: string;
+  nextLabel: string; // label for the "Next: ..." button, absent on the last step
+}

@@ -75,5 +75,40 @@
       { "id": "white", "label": "White", "swatch": "#F4F3EE" },
       { "id": "black", "label": "Black", "swatch": "#2B2B2B" }
     ]
+  },
+  {
+    "id": "wyze-sense-motion-sensor",
+    "stepId": "sensors",
+    "layout": "grid",
+    "name": "Wyze Sense Motion Sensor",
+    "description": "Detects motion up to 30 feet away and sends an instant alert.",
+    "learnMoreUrl": "#",
+    "image": "/assets/products/wyze-sense-motion-sensor.svg",
+    "price": 29.99,
+    "variants": [
+      { "id": "white", "label": "White", "swatch": "#F4F3EE" }
+    ]
+  },
+  {
+    "id": "wyze-sense-hub",
+    "stepId": "sensors",
+    "layout": "grid",
+    "name": "Wyze Sense Hub",
+    "description": "Required. Connects all of your Wyze Sense sensors to the app.",
+    "learnMoreUrl": "#",
+    "image": "/assets/products/wyze-sense-hub.svg",
+    "compareAtPrice": 29.92,
+    "price": 0,
+    "isRequired": true
+  },
+  {
+    "id": "wyze-microsd-card",
+    "stepId": "accessories",
+    "layout": "grid",
+    "name": "Wyze MicroSD Card (256GB)",
+    "description": "Store footage locally on your camera, no subscription required.",
+    "learnMoreUrl": "#",
+    "image": "/assets/products/wyze-microsd-card.svg",
+    "price": 20.98
   }
 ]

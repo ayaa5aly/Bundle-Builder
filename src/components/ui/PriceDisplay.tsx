@@ -31,10 +31,14 @@ export function PriceDisplay({
       )}
       <span
         className={
-          hasDiscount ? "text-[var(--color-discount)]" : "text-slate-900"
+          price === 0
+            ? "text-[var(--color-savings)]"
+            : hasDiscount
+              ? "text-[var(--color-discount)]"
+              : "text-slate-900"
         }
       >
-        {formatUsd(price)}
+        {price === 0 ? "FREE" : formatUsd(price)}
       </span>
     </span>
   );
